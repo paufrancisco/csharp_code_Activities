@@ -1,0 +1,72 @@
+using System;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Program myCalculator = new Program();
+
+            // Get user input for numbers and operation
+            Console.WriteLine("Enter the 1st number: ");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the 2nd number: ");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Operation (+, -, *, /): ");
+            string operation = Console.ReadLine();
+
+            // Perform the operation based on user input
+            switch (operation)
+            {
+                case "+":
+                    Console.WriteLine("The sum is " + myCalculator.Add(num1, num2));
+                    break;
+                case "-":
+                    Console.WriteLine("The difference is " + myCalculator.Sub(num1, num2));
+                    break;
+                case "*":
+                    Console.WriteLine("The product is " + myCalculator.Multiply(num1, num2));
+                    break;
+                case "/":
+                    // Handle division by zero
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Error: Division by zero is not allowed.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The quotient is " + myCalculator.Divide(num1, num2));
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid operation.");
+                    break;
+            }
+
+            // Wait for user input to close the console window
+            Console.ReadKey();
+        }
+
+        // Methods for basic arithmetic operations
+        public int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        public int Sub(int x, int y)
+        {
+            return x - y;
+        }
+
+        public int Divide(int x, int y)
+        {
+            return x / y;
+        }
+
+        public int Multiply(int x, int y)
+        {
+            return x * y;
+        }
+    }
+}
